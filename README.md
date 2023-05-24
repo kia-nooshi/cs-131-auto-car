@@ -7,7 +7,7 @@ Link to project: https://github.com/NVIDIA-AI-IOT/jetbot
 
 ## Middleware Setup
 
-1. Setup a pythong virtual enviorment (technically optional)
+1. Setup a python virtual enviorment (technically optional)
     a. https://docs.python.org/3/library/venv.html
     
 2. Change directories to middleware folder
