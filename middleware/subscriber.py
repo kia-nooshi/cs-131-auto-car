@@ -9,5 +9,6 @@ socket.setsockopt_string(zmq.SUBSCRIBE, '10001')
 # logic for reading msgs
 
 while(True):
+    # if there is no message this get hung up
     message = socket.recv()
     print(message)
