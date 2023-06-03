@@ -215,7 +215,6 @@ void Tick2(){
         break;
 
       case READ:
-         Serial.println("READ");
          
         break;
       
@@ -234,7 +233,6 @@ void Tick2(){
          digitalWrite(trigPin, LOW);
          duration = pulseIn(echoPin, HIGH);
          inches = microsecondsToInches(duration);
-         Serial.println(inches);
         break;
         
       default:
