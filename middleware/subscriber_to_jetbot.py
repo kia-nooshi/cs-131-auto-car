@@ -71,9 +71,9 @@ def cloud_to_jetbot():
 def cloud_sub():
     while True:
         cloud_to_jetbot()
-        time.sleep(10)
+        time.sleep(2)
 
-#t1 = Thread(target = jetBot_to_middle)
-#t1.start()
-t1 = Thread(target = cloud_to_jetbot())
+t1 = Thread(target = jetBot_to_middle)
 t1.start()
+t2 = Thread(target = cloud_sub())
+t2.start()
