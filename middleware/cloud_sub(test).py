@@ -10,7 +10,7 @@ timeout = 5.0
 subscriber = pubsub_v1.SubscriberClient()
 # The `subscription_path` method creates a fully qualified identifier
 # in the form `projects/{project_id}/subscriptions/{subscription_id}`
-subscription_path = subscriber.subscription_path('cs-131-final-project', 'test-sub')
+subscription_path = subscriber.subscription_path('cs-131-final-project', 'edge-sub')
 
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     print(f"Received {message}.")

@@ -10,7 +10,7 @@ publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path('cs-131-final-project', 'test-topic')
 
 for n in range(1, 10):
-    data_str = f"Message number {n}"
+    data_str = f"New Msg {n}"
     # Data must be a bytestring
     data = data_str.encode("utf-8")
     # When you publish a message, the client returns a future.
