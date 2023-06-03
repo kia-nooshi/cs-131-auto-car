@@ -3,7 +3,6 @@ import time
 from google.cloud import pubsub_v1
 from threading import Thread
 from concurrent.futures import TimeoutError
-from middleware.subscriber_to_jetbot import cloud_to_jetbot
 
 def jetBot_to_middle():
     # TODO(developer)
