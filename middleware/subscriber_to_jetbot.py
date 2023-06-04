@@ -83,7 +83,7 @@ def cloud_sub():
         cloud_to_jetbot(socket)
         time.sleep(1)
 
-#t1 = Thread(target = jetBot_to_middle)
-#t1.start()
-t1 = Thread(target = cloud_sub())
+t1 = Thread(target = jetBot_to_middle)
 t1.start()
+t2 = Thread(target = cloud_sub())
+t2.start()
