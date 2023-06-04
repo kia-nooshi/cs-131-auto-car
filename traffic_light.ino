@@ -76,9 +76,9 @@ int TickFct_LS2(){
       digitalWrite(b4, LOW);
       digitalWrite(b6, HIGH);
 
-      if(inches < 6){
+      /*if(inches < 6){
         count = count + 4;
-      }
+      }*/
       if(count >= 8){
         count = 0;
         state = yellow1;
@@ -117,7 +117,7 @@ int TickFct_LS2(){
       digitalWrite(b2, LOW);
       digitalWrite(b4, LOW);
       digitalWrite(b6, HIGH);
-      if(count == 2){
+      if(count == 1){
         count = 0;
         state = green2;
       }
@@ -129,7 +129,7 @@ int TickFct_LS2(){
 
 
     case green2:
-      Serial.println("Green Light");
+      //Serial.println("Green Light");
       digitalWrite(b3, LOW);
       digitalWrite(b5, LOW);
       digitalWrite(b7, HIGH);
@@ -148,7 +148,7 @@ int TickFct_LS2(){
      break;
 
     case yellow2:
-      Serial.println("Yellow Light");
+      //Serial.println("Yellow Light");
       digitalWrite(b3, LOW);
       digitalWrite(b5, LOW);
       digitalWrite(b7, HIGH);
@@ -167,7 +167,7 @@ int TickFct_LS2(){
      break;
 
     case red2:
-      Serial.println("Red Light");
+      //Serial.println("Red Light");
       digitalWrite(b3, LOW);
       digitalWrite(b5, LOW);
       digitalWrite(b7, HIGH);
@@ -175,7 +175,7 @@ int TickFct_LS2(){
       digitalWrite(b2, LOW);
       digitalWrite(b4, LOW);
       digitalWrite(b6, HIGH);
-      if(count == 2){
+      if(count == 1){
         count = 0;
         state = green1;
       }
