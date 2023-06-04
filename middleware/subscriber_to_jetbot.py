@@ -5,9 +5,6 @@ from threading import Thread
 from concurrent.futures import TimeoutError
 
 def jetBot_to_middle():
-    # TODO(developer)
-    # project_id = "your-project-id"
-    # topic_id = "your-topic-id"
     # setting up info for google cloud api
     publisher = pubsub_v1.PublisherClient()
     # The `topic_path` method creates a fully qualified identifier
@@ -38,11 +35,19 @@ def jetBot_to_middle():
             print('no msg')
             context.destroy()
             time.sleep(1)
-            
-def cloud_to_jetbot():
-    # TODO(developer)
-    # project_id = "your-project-id"
-    # subscription_id = "your-subscription-id"
+
+#function that handles communication from fog to jetbot
+def middle_to_jetbot(msg,socket):
+    # <class 'google.cloud.pubsub_v1.subscriber.message.Message'>
+    #print(type(msg))
+    topic = 11011
+    msgData = bytes.decode(msg.data)
+    socket.send_string('%d %s' % (topic, msgData))
+    print(f'Sent to Nano \n{topic} {msgData}')
+    #print(type(msgData))
+
+def cloud_to_jetbot(socket):
+    # gcloud setup
     # Number of seconds the subscriber should listen for messages
     timeout = 5.0
 
@@ -54,6 +59,8 @@ def cloud_to_jetbot():
     def callback(message: pubsub_v1.subscriber.message.Message) -> None:
         print(f"Received {message}.")
         message.ack()
+        # once msg recived relay to jetbot
+        middle_to_jetbot(message,socket)
 
     streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
     print(f"Listening for messages on {subscription_path}..\n")
@@ -69,11 +76,14 @@ def cloud_to_jetbot():
             streaming_pull_future.result()  # Block until the shutdown is complete.
 
 def cloud_sub():
+    context = zmq.Context()
+    socket = context.socket(zmq.PUB)
+    socket.bind('tcp://*:2002')
     while True:
-        cloud_to_jetbot()
-        time.sleep(2)
+        cloud_to_jetbot(socket)
+        time.sleep(1)
 
-t1 = Thread(target = jetBot_to_middle)
+#t1 = Thread(target = jetBot_to_middle)
+#t1.start()
+t1 = Thread(target = cloud_sub())
 t1.start()
-t2 = Thread(target = cloud_sub())
-t2.start()
