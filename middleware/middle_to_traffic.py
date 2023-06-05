@@ -4,7 +4,7 @@ import time
 # setup for subscriber
 context_subscriber = zmq.Context()
 socket_subscriber = context_subscriber.socket(zmq.SUB)
-socket_subscriber.connect('tcp://192.168.254.129:2000')
+socket_subscriber.connect('tcp://192.168.254.78:2000')
 # socket channel for publisher of traffic light
 socket_subscriber.setsockopt_string(zmq.SUBSCRIBE, '10011')
 
@@ -22,4 +22,4 @@ while(True):
     message = socket_subscriber.recv()
     if len(message) > 0:
         socket_publisher.send_string('%d %s' % (topic_publisher, message))
-        print(message)
+        print(f'Traffic light Status: {message}')

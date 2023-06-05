@@ -15,7 +15,7 @@ def jetBot_to_middle():
     # setup for subscriber
     context = zmq.Context()
     socket = context.socket(zmq.SUB)
-    socket.connect('tcp://192.168.254.133:2000')
+    socket.connect('tcp://192.168.254.85:2000')
     # socket channel for publisher of traffic light
     socket.setsockopt_string(zmq.SUBSCRIBE, '10001')
     
@@ -25,12 +25,14 @@ def jetBot_to_middle():
             # if there is no message this get hung up
             message = socket.recv()
             if len(message) > 0:
+                print(f'Msg from Jetbot 1 to fog: {message}')
                 # Data must be a bytestring
-                data = "Car 1 Stopped".encode("utf-8")
+                print('sending blocked command to cloud')
+                data = f"Car 1 Stopped {message}".encode("utf-8")
                 # When you publish a message, the client returns a future.
                 future = publisher.publish(topic_path, data)
-                print(future.result())
-            print(message)
+                future.result()
+            #print(message)
         except:
             print('no msg')
             context.destroy()
@@ -43,7 +45,7 @@ def middle_to_jetbot(msg,socket):
     topic = 11011
     msgData = bytes.decode(msg.data)
     socket.send_string('%d %s' % (topic, msgData))
-    print(f'Sent to Nano \n{topic} {msgData}')
+    print(f'Sent to Jetbot 1: {topic} {msgData}\n')
     #print(type(msgData))
 
 def cloud_to_jetbot(socket):
@@ -57,7 +59,7 @@ def cloud_to_jetbot(socket):
     subscription_path = subscriber.subscription_path('cs-131-final-project', 'edge-sub')
 
     def callback(message: pubsub_v1.subscriber.message.Message) -> None:
-        print(f"Received {message}.")
+        print(f"Received from cloud {message}.\n")
         message.ack()
         # once msg recived relay to jetbot
         middle_to_jetbot(message,socket)
