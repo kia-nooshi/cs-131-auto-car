@@ -1,5 +1,7 @@
 # CS-131 Final Project
 
+Groud 16
+
 This project was build using the template that the IOT jetbot Project provides. 
 
 Link to project: https://github.com/NVIDIA-AI-IOT/jetbot
