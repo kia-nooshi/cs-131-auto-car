@@ -1,6 +1,6 @@
 # CS-131 Final Project
 
-Groud 16
+Group 16
 
 This project was build using the template that the IOT jetbot Project provides. 
 
