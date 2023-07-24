@@ -1,6 +1,8 @@
 ## Basic Info
 Members: Kyle Damschen, Michael Wessels, Gregory Griffith, Kianoosh Nooshi
 
+**Live Demo Video**: https://youtu.be/iQ3U747LhYo
+
 This project was build using the template that the IOT jetbot Project provides. 
 
 Link to project: https://github.com/NVIDIA-AI-IOT/jetbot
