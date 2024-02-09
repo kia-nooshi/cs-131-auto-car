@@ -3,13 +3,13 @@ Members: Kyle Damschen, Michael Wessels, Gregory Griffith, Kianoosh Nooshi
 
 **Live Demo Video**: https://youtu.be/iQ3U747LhYo
 
-This project was build using the template that the IOT jetbot Project provides. 
+This project was built using the template provided by the open-source IOT Jetbot Project. 
 
 Link to project: https://github.com/NVIDIA-AI-IOT/jetbot
 
 ## Description
 
-Created a self-driving RC car collaboratively with a team of four, employing Python, Machine Learning, middleware layers, and Google Cloud services. The project focuses on achieving autonomous driving capabilities while continuously collecting real-time data to identify and address traffic congestion and road blockages, ultimately optimizing route selection for all vehicles within the network. Our development process adhered to agile principles and encompassed comprehensive system testing.
+Created a self-driving RC car collaboratively with a team of four, employing Python, computer vision, middleware layers, and Google Cloud services. The project focuses on achieving autonomous driving capabilities while continuously collecting real-time data to identify and address traffic congestion and road blockages, ultimately optimizing route selection for all vehicles within the network. Our development process adhered to agile principles and encompassed comprehensive system testing.
 
 ## Middleware Setup
 
